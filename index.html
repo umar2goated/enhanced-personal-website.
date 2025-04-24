@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Muhammad Umar | Interactive Presentation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      background: #111;
+      color: white;
+    }
+
+    .slide {
+      display: none;
+      height: 100vh;
+      width: 100%;
+      padding: 60px 40px;
+      box-sizing: border-box;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(135deg, #1e90ff, #00c897);
+      transition: all 1s ease-in-out;
+    }
+
+    .slide.active {
+      display: flex;
+      animation: fadeSlide 1s ease-in-out;
+    }
+
+    h1, h2 {
+      font-size: 3em;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.5em;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .nav-buttons {
+      position: fixed;
+      bottom: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 1em;
+      border: none;
+      border-radius: 8px;
+      background: white;
+      color: #111;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #ddd;
+    }
+
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="slide active">
+    <div>
+      <h1>Hi, I'm Muhammad Umar</h1>
+      <p>Welcome to my interactive journey — let's explore what drives me.</p>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div>
+      <h2>About Me</h2>
+      <p>I’m passionate about cars, basketball, video games, and spending quality time with friends. I always give my best and stay committed, no matter the challenge.</p>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div>
+      <h2>Achievements</h2>
+      <p>• Student of the Month<br>• Parkway Director's List</p>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div>
+      <h2>Career Goals</h2>
+      <p>I aim to be a top-tier automotive and aviation technician, making my family proud and building a future of success and financial independence.</p>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div>
+      <h2>Why Automotive Tech?</h2>
+      <p>I thrive on hands-on challenges and love solving problems. My passion for cars drives me to push my limits every day.</p>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div>
+      <h2>Future Plans</h2>
+      <p>I plan to attend Pittsburgh Institute of Aeronautics (PIA) and pursue a career in automotive or aviation technology — both fields fascinate me.</p>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div>
+      <h2>Thanks for Watching</h2>
+      <p>Feel free to reach out — let's connect!</p>
+    </div>
+  </div>
+
+  <div class="nav-buttons">
+    <button onclick="prevSlide()">Previous</button>
+    <button onclick="nextSlide()">Next</button>
+  </div>
+
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+
+    function showSlide(index) {
+      slides.forEach(slide => slide.classList.remove('active'));
+      slides[index].classList.add('active');
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') nextSlide();
+      if (e.key === 'ArrowLeft') prevSlide();
+    });
+  </script>
+
+</body>
+</html>
